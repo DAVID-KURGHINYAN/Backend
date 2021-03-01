@@ -10,7 +10,12 @@ public class UserController {
     }
 
     @Test
-    public void Test() throws Exception {
+    public void GetAdminsSuccessCase() {
         userService.GetAdminsList();
+    }
+
+    @Test
+    public void CreateAdminSuccessCase() {
+        userService.CreateAdmin();
     }
 }

@@ -3,6 +3,7 @@ package helpers;
 import helpers.enums.Languages;
 import helpers.enums.Roles;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 
@@ -10,23 +11,37 @@ public class NetworkManager {
 
     private static final String baseUrl = "https://alfaback.abmdemo.me";
 
-    public String Get(String uri, String param, Languages language, Roles role) {
+    public helpers.Response Get(String uri, String param, Languages language, Roles role) {
         String url = baseUrl + uri + param;
 
         Response response = given()
                 .contentType("application/json")
                 .header("languageName", language.toString())
-                .header("Authorization", "Bearer " + TokenHelper.getToken(role, baseUrl))
+                .header("Authorization", "Bearer " + TokenHelper.getToken(role))
                 .get(url)
                 .then()
                 .extract()
                 .response();
 
-      return response.getBody().asString();
+        return new helpers.Response(response.getBody().asString(), response.getStatusCode());
     }
 
-    public <T, R> T Post(R requestModel, String uri, String param) {
-        return null;
+    public helpers.Response Post(String body, String uri, String param, Languages language, Roles role) {
+        String url = baseUrl + uri + param;
+        RequestSpecification specification = given()
+                .contentType("application/json")
+                .header("languageName", language.toString());
+        if (role != Roles.Default) {
+            specification = specification.header("Authorization", "Bearer " + TokenHelper.getToken(role));
+        }
+        Response response = specification
+                .body(body)
+                .post(url)
+                .then()
+                .extract()
+                .response();
+
+        return new helpers.Response(response.getBody().asString(), response.getStatusCode());
     }
 
     public void Put() {

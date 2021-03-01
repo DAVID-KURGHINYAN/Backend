@@ -2,43 +2,57 @@ package modules.user.apis;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import helpers.BaseApi;
 import helpers.NetworkManager;
+import helpers.Response;
 import helpers.ResponseModel;
 import helpers.enums.Languages;
 import helpers.enums.Roles;
+import modules.user.models.request.ReqAdminCreateModel;
+import modules.user.models.request.ReqLoginModel;
 import modules.user.models.response.ResAdminDetails;
 import modules.user.models.response.ResAdminList;
-import modules.user.models.response.ResRegisterUser;
+import modules.user.models.response.ResLoginModel;
 
 import java.lang.reflect.Type;
 import java.util.List;
 
-public class UserApi {
-    private final NetworkManager networkManager;
+public class UserApi extends BaseApi {
 
-    public UserApi() {
-        networkManager = new NetworkManager();
+    public ResponseModel<List<ResAdminList>> GetAdminList(Roles role) {
+        Response response = networkManager.Get("/api/Admin", "", Languages.hy, role);
+        Type collectionType = new TypeToken<ResponseModel<List<ResAdminList>>>() {}.getType();
+        ResponseModel<List<ResAdminList>> responseModel = gson.fromJson(response.responseText, collectionType);
+        responseModel.statusCode = response.statusCode;
+        return responseModel;
     }
 
-//    public ResponseModel<ResRegisterUser> RegisterUser(ResRegisterUser model) {
-//        return networkManager.Get("/api/Admin","", Languages.hy, Roles.Admin);
-//    }
-
-    public ResponseModel<List<ResAdminList>> GetAdminList() {
-        String response = networkManager.Get("/api/Admin", "", Languages.hy, Roles.Admin);
-
-        Gson gson = new Gson();
-        Type collectionType = new TypeToken<ResponseModel<List<ResAdminList>>>() {
-        }.getType();
-        return gson.fromJson(response, collectionType);
-    }
-
-    public ResponseModel<ResAdminDetails> GetAdminById(String id) {
-        String response = networkManager.Get("/api/Admin/", id, Languages.hy, Roles.Admin);
-
-        Gson gson = new Gson();
+    public ResponseModel<ResAdminDetails> GetAdminById(Roles roles, String id) {
+        Response response = networkManager.Get("/api/Admin/", id, Languages.hy, roles);
         Type collectionType = new TypeToken<ResponseModel<ResAdminDetails>>() {
         }.getType();
-        return gson.fromJson(response, collectionType);
+        ResponseModel<ResAdminDetails> responseModel = gson.fromJson(response.responseText, collectionType);
+        responseModel.statusCode = response.statusCode;
+        return responseModel;
+    }
+
+    public ResponseModel<ResLoginModel> Login(ReqLoginModel model, Roles role) {
+        String json = gson.toJson(model);
+        Response response = networkManager.Post(json, getUrl(role), "", Languages.hy, Roles.Default);
+        Type collectionType = new TypeToken<ResponseModel<ResLoginModel>>() {
+        }.getType();
+        ResponseModel<ResLoginModel> responseModel = gson.fromJson(response.responseText, collectionType);
+        responseModel.statusCode = response.statusCode;
+        return responseModel;
+    }
+
+    public ResponseModel<Boolean> CreateAdmin(ReqAdminCreateModel model, Roles role) {
+        String json = gson.toJson(model);
+        Response response = networkManager.Post(json, "/api/Admin/", "", Languages.hy, role);
+        Type collectionType = new TypeToken<ResponseModel<Boolean>>() {
+        }.getType();
+        ResponseModel<Boolean> responseModel = gson.fromJson(response.responseText, collectionType);
+        responseModel.statusCode = response.statusCode;
+        return responseModel;
     }
 }

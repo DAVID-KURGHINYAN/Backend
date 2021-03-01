@@ -3,5 +3,7 @@ package helpers.enums;
 public enum Roles {
     Admin,
     User,
-    Guest
+    BranchAdmin,
+    Guest,
+    Default
 }
