@@ -13,11 +13,14 @@ public class NetworkManager {
 
     public helpers.Response Get(String uri, String param, Languages language, Roles role) {
         String url = baseUrl + uri + param;
-
-        Response response = given()
+        RequestSpecification specification = given()
                 .contentType("application/json")
-                .header("languageName", language.toString())
-                .header("Authorization", "Bearer " + TokenHelper.getToken(role))
+                .header("languageName", language.toString());
+        if (role != Roles.Default) {
+            specification = specification.header("Authorization", "Bearer " + TokenHelper.getToken(role));
+        }
+
+        Response response = specification
                 .get(url)
                 .then()
                 .extract()
@@ -44,8 +47,21 @@ public class NetworkManager {
         return new helpers.Response(response.getBody().asString(), response.getStatusCode());
     }
 
-    public void Put() {
-
+    public helpers.Response Put(String body, String uri, String param, Languages language, Roles role) {
+        String url = baseUrl + uri + param;
+        RequestSpecification specification = given()
+                .contentType("application/json")
+                .header("languageName", language.toString());
+        if (role != Roles.Default && role != Roles.Guest) {
+            specification = specification.header("Authorization","Bearer "+TokenHelper.getToken(role));
+        }
+        Response response = specification
+                .body(body)
+                .put(url)
+                .then()
+                .extract()
+                .response();
+        return new helpers.Response(response.getBody().asString(),response.getStatusCode());
     }
 
     public void Delete() {

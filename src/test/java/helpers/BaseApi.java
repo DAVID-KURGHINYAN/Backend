@@ -20,4 +20,13 @@ public class BaseApi {
         }
         return "/api/Auth/AdminLogin";
     }
+
+    protected String getUrlForProduct() {
+        return "/api/Product/List";
+    }
+
+    protected String getUrlForDoctorList() {
+        return "/api/Doctor/List";
+    }
+
 }

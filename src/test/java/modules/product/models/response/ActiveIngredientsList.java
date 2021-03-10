@@ -1,0 +1,12 @@
+package modules.product.models.response;
+
+import lombok.Data;
+
+@Data
+public class ActiveIngredientsList {
+    private Id_Name activeIngredients;
+    private int productsCount;
+
+    public ActiveIngredientsList() {
+    }
+}

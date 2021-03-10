@@ -1,11 +1,7 @@
 package modules.user.apis;
 
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import helpers.BaseApi;
-import helpers.NetworkManager;
-import helpers.Response;
-import helpers.ResponseModel;
+import helpers.*;
 import helpers.enums.Languages;
 import helpers.enums.Roles;
 import modules.user.models.request.ReqAdminCreateModel;
@@ -21,7 +17,8 @@ public class UserApi extends BaseApi {
 
     public ResponseModel<List<ResAdminList>> GetAdminList(Roles role) {
         Response response = networkManager.Get("/api/Admin", "", Languages.hy, role);
-        Type collectionType = new TypeToken<ResponseModel<List<ResAdminList>>>() {}.getType();
+        Type collectionType = new TypeToken<ResponseModel<List<ResAdminList>>>() {
+        }.getType();
         ResponseModel<List<ResAdminList>> responseModel = gson.fromJson(response.responseText, collectionType);
         responseModel.statusCode = response.statusCode;
         return responseModel;
@@ -39,8 +36,7 @@ public class UserApi extends BaseApi {
     public ResponseModel<ResLoginModel> Login(ReqLoginModel model, Roles role) {
         String json = gson.toJson(model);
         Response response = networkManager.Post(json, getUrl(role), "", Languages.hy, Roles.Default);
-        Type collectionType = new TypeToken<ResponseModel<ResLoginModel>>() {
-        }.getType();
+        Type collectionType = new TypeToken<ResponseModel<ResLoginModel>>() {}.getType();
         ResponseModel<ResLoginModel> responseModel = gson.fromJson(response.responseText, collectionType);
         responseModel.statusCode = response.statusCode;
         return responseModel;
@@ -49,10 +45,19 @@ public class UserApi extends BaseApi {
     public ResponseModel<Boolean> CreateAdmin(ReqAdminCreateModel model, Roles role) {
         String json = gson.toJson(model);
         Response response = networkManager.Post(json, "/api/Admin/", "", Languages.hy, role);
-        Type collectionType = new TypeToken<ResponseModel<Boolean>>() {
-        }.getType();
+        Type collectionType = new TypeToken<ResponseModel<Boolean>>() {}.getType();
         ResponseModel<Boolean> responseModel = gson.fromJson(response.responseText, collectionType);
         responseModel.statusCode = response.statusCode;
         return responseModel;
+    }
+
+    public ResponseModel<Boolean> EditAdmin(ReqAdminCreateModel model, Roles role) {
+        String json = gson.toJson(model);
+        Response response = networkManager.Put(json, "/api/Admin/", "", Languages.hy, role);
+        Type collectionType = new TypeToken<ResponseModel<Boolean>>() {}.getType();
+        ResponseModel<Boolean> responseModel = gson.fromJson(response.responseText, collectionType);
+        responseModel.statusCode = response.statusCode;
+        return responseModel;
+
     }
 }

@@ -19,7 +19,6 @@ public class UserService extends BaseService {
     private final UserApi userApi;
 
     public UserService() {
-
         userApi = new UserApi();
     }
 
@@ -44,7 +43,7 @@ public class UserService extends BaseService {
 
         Faker faker = new Faker();
         ReqAdminCreateModel model = new ReqAdminCreateModel();
-        model.setRoleId("3abade02-b79a-480c-b7a2-5595b69210af");
+        model.setRoleId("04c2d117-33a0-4ce9-b68c-ce8fcd0ca12e");
         model.setFirstName(faker.name().firstName());
         model.setLastName(faker.name().lastName());
         model.setPhoneNumber(faker.phoneNumber().phoneNumber());
@@ -58,5 +57,27 @@ public class UserService extends BaseService {
         Assert.assertEquals(responseModel.statusCode, 200);
         Assert.assertTrue(responseModel.success);
 
+    }
+
+    public void EditAdmin() {
+        FakeValuesService fakeValuesService = new FakeValuesService(
+                new Locale("en-GB"), new RandomService());
+
+        String email = fakeValuesService.bothify("????##@gmail.com");
+
+        Faker faker = new Faker();
+        ReqAdminCreateModel model = new ReqAdminCreateModel();
+        model.setRoleId("04c2d117-33a0-4ce9-b68c-ce8fcd0ca12e");
+        model.setFirstName(faker.name().firstName());
+        model.setLastName(faker.name().lastName());
+        model.setPhoneNumber(faker.phoneNumber().phoneNumber());
+        model.setEmail(email);
+        model.setUsername(faker.funnyName().name());
+        model.setPassword(model.getPassword());
+        model.setType(1);
+        model.setPharmacyBranchId(6);
+
+        ResponseModel<Boolean> responseModel = userApi.EditAdmin(model, Roles.Admin);
+        Assert.assertTrue(responseModel.success);
     }
 }
