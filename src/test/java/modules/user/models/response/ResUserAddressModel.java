@@ -6,7 +6,7 @@ import java.util.List;
 
 @Data
 public class ResUserAddressModel {
-    List<AddressModel> addressModel;
+    List<ResGetUserAddressModel> addressModel;
 
     public ResUserAddressModel() {
     }

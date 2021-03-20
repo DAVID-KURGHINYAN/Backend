@@ -1,7 +1,7 @@
 package modules.basket.models.response;
 
 import lombok.Data;
-import modules.product.models.response.Promotion;
+import modules.product.models.Promotion;
 
 @Data
 public class ResBasketUpdate {

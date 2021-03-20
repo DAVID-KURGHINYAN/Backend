@@ -1,6 +1,8 @@
 package modules.product.models.response;
 
+import helpers.Translation;
 import lombok.Data;
+import modules.product.models.Promotion;
 
 import java.util.List;
 
@@ -30,8 +32,8 @@ public class ProductModel {
     private Promotion promotion;
     private Promotion packagePromotion;
     private List<ImageModel> images;
-    private ActiveIngredientsList activeIngredients;
-    private String translations;
+    private List<ActiveIngredientsList> activeIngredients;
+    private List<Translation> translations;
 
     public ProductModel() {
     }

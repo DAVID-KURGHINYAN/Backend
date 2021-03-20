@@ -1,14 +1,17 @@
 package modules.user.controllers;
 
+import modules.user.services.AddressService;
 import modules.user.services.UserService;
 import org.junit.Test;
 
 
 public class UserController {
     private final UserService userService;
+    private final AddressService addressService;
 
     public UserController() {
         userService = new UserService();
+        addressService = new AddressService();
     }
 
     @Test
@@ -26,5 +29,10 @@ public class UserController {
     @Test
     public void EditAdminSuccessCase() {
         userService.EditAdmin();
+    }
+
+    @Test
+    public void GetUserAddressSuccessCase(){
+        addressService.getUserAddress();
     }
 }

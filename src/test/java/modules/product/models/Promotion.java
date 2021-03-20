@@ -1,6 +1,8 @@
-package modules.product.models.response;
+package modules.product.models;
 
 import lombok.Data;
+import modules.product.models.response.AvailablePromotion;
+import modules.product.models.response.GroupPromotion;
 
 
 @Data

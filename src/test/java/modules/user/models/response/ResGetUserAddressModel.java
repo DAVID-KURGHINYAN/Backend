@@ -3,7 +3,7 @@ package modules.user.models.response;
 import lombok.Data;
 
 @Data
-public class AddressModel {
+public class ResGetUserAddressModel {
     private int id;
     private boolean isDefault;
     private String name;
@@ -16,6 +16,6 @@ public class AddressModel {
     private String apartment;
     private String comment;
 
-    public AddressModel() {
+    public ResGetUserAddressModel() {
     }
 }

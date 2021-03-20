@@ -10,7 +10,23 @@ import static io.restassured.RestAssured.given;
 public class NetworkManager {
 
     private static final String baseUrl = "https://alfaback.abmdemo.me";
+    private static final String baseUrlAdmin = "https://alfaadmin.abmdemo.me";
 
+    public helpers.Response PostAdmin(String uri,String param, Languages language, Roles role) {
+        String url = baseUrlAdmin + uri + param;
+        RequestSpecification specification = given()
+                .contentType("application/json")
+                .header("languageName", language.toString());
+        if (role == Roles.Admin) {
+            specification = specification.header("Authorization","Bearer "+TokenHelper.getToken(role));
+        }
+        Response response = specification
+                .post(url)
+                .then()
+                .extract().response();
+
+        return new helpers.Response(response.getBody().asString(),response.getStatusCode());
+    }
     public helpers.Response Get(String uri, String param, Languages language, Roles role) {
         String url = baseUrl + uri + param;
         RequestSpecification specification = given()

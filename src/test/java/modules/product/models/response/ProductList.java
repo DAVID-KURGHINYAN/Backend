@@ -1,6 +1,7 @@
 package modules.product.models.response;
 
 import lombok.Data;
+import modules.product.models.Promotion;
 
 import java.util.List;
 

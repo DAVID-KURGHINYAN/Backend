@@ -12,6 +12,12 @@ public class BaseApi {
         this.gson = new Gson();
     }
 
+    protected String getUrlAdmin(Roles role) {
+        if (role == Roles.Admin) {
+            return "/admin/orders/list";
+        }
+        return "";
+    }
     protected String getUrl(Roles role) {
         if (role == Roles.User) {
             return "/api/Auth/Login";
@@ -25,8 +31,8 @@ public class BaseApi {
         return "/api/Product/List";
     }
 
-    protected String getUrlForDoctorList() {
-        return "/api/Doctor/List";
-    }
+    protected String getUrlForDoctorList() { return "/api/Doctor/List"; }
+
+    protected String getUrlForFavorite() { return "/api/Favorite"; }
 
 }

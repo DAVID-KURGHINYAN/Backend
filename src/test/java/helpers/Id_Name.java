@@ -1,4 +1,4 @@
-package modules.product.models.response;
+package helpers;
 
 import lombok.Data;
 
