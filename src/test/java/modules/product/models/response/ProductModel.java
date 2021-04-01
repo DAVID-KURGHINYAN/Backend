@@ -1,5 +1,6 @@
 package modules.product.models.response;
 
+import helpers.Id_Name;
 import helpers.Translation;
 import lombok.Data;
 import modules.product.models.Promotion;
@@ -26,7 +27,7 @@ public class ProductModel {
     private boolean isFavorite;
     private boolean isSpecial;
     private String createdDate;
-    private Brand brand;
+    private Id_Name brand;
     private Producer producer;
     private Category category;
     private Promotion promotion;

@@ -6,15 +6,22 @@ import helpers.enums.Languages;
 import helpers.enums.Roles;
 import modules.user.models.request.ReqAdminCreateModel;
 import modules.user.models.request.ReqLoginModel;
-import modules.user.models.response.ResAdminDetails;
-import modules.user.models.response.ResAdminList;
-import modules.user.models.response.ResGetUserAddressModel;
-import modules.user.models.response.ResLoginModel;
+import modules.user.models.response.*;
 
 import java.lang.reflect.Type;
 import java.util.List;
 
 public class UserApi extends BaseApi {
+
+        public ResponseModel<ResAdminLoginModel> adminLogin(ReqLoginModel model) {
+        String json = gson.toJson(model);
+        Type type = new TypeToken<ResponseModel<ResAdminLoginModel>>(){}.getType();
+        Response response = networkManager.PostAdmin(json,getUriAdminLogin(),"",Languages.hy, Roles.Default);
+        ResponseModel<ResAdminLoginModel> responseModel = gson.fromJson(response.responseText,type);
+        responseModel.statusCode  = response.statusCode;
+
+        return responseModel;
+    }
 
     public ResponseModel<List<ResAdminList>> GetAdminList(Roles role) {
         Response response = networkManager.Get("/api/Admin", "", Languages.hy, role);
@@ -36,7 +43,7 @@ public class UserApi extends BaseApi {
 
     public ResponseModel<ResLoginModel> Login(ReqLoginModel model, Roles role) {
         String json = gson.toJson(model);
-        Response response = networkManager.Post(json, getUrl(role), "", Languages.hy, Roles.Default);
+        Response response = networkManager.Post(json, getUri(role), "", Languages.hy, Roles.Admin);
         Type collectionType = new TypeToken<ResponseModel<ResLoginModel>>() {
         }.getType();
         ResponseModel<ResLoginModel> responseModel = gson.fromJson(response.responseText, collectionType);
@@ -46,7 +53,7 @@ public class UserApi extends BaseApi {
 
     public ResponseModel<Boolean> CreateAdmin(ReqAdminCreateModel model, Roles role) {
         String json = gson.toJson(model);
-        Response response = networkManager.Post(json, "/api/Admin/", "", Languages.hy, role);
+        Response response = networkManager.PostAdmin(json, getUriAdmin(role), "", Languages.hy,role);
         Type collectionType = new TypeToken<ResponseModel<Boolean>>() {
         }.getType();
         ResponseModel<Boolean> responseModel = gson.fromJson(response.responseText, collectionType);

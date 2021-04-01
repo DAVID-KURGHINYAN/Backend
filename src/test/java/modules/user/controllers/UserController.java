@@ -22,8 +22,11 @@ public class UserController {
 
     @Test
     public void CreateAdminSuccessCase() {
-
         userService.CreateAdmin();
+    }
+    @Test
+    public void GetBranchAdminTokenSuccessCase(){
+        userService.TakeAdminToken();
     }
 
     @Test

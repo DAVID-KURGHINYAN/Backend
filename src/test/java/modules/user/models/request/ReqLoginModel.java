@@ -1,13 +1,14 @@
 package modules.user.models.request;
 
+import lombok.Data;
+
+@Data
 public class ReqLoginModel {
-    public String username;
-    public String password;
+    private String username;
+    private String password;
 
-    public ReqLoginModel(){
-    }
 
-    public ReqLoginModel(String username, String password){
+    public ReqLoginModel(String username, String password) {
         this.username = username;
         this.password = password;
     }

@@ -10,17 +10,17 @@ public class TokenHelper {
         UserApi userApi = new UserApi();
 
         if (role == Roles.Admin) {
-            return userApi.Login(new ReqLoginModel(
+            return userApi.adminLogin(new ReqLoginModel(
                     "admin@gmail.com",
-                    "Password1/"), role).data.accessToken;
+                    "Password1/")).data.getAccessToken();
         } else if (role == Roles.User) {
             return userApi.Login(new ReqLoginModel(
                     "+37494172839",
-                    "taron123"), role).data.accessToken;
+                    "taron123"), role).data.getAccessToken();
         } else if (role == Roles.BranchAdmin) {
             return userApi.Login(new ReqLoginModel(
                     "Alla_123",
-                    "password"), role).data.accessToken;
+                    "password"), role).data.getAccessToken();
         }
         return "";
     }

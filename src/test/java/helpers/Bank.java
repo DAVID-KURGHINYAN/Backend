@@ -1,6 +1,10 @@
 package helpers;
 
+import helpers.enums.Languages;
+import helpers.enums.Roles;
+
 public class Bank {
+
     public static String hip(double varkiGumar, int varkiJamket, double tokos) {
         double sum=0;
         double monthSum = varkiGumar/varkiJamket;
@@ -15,8 +19,8 @@ public class Bank {
     }
 
     public static void main(String[] args) {
-        String a = hip(28000, 180, 10.5);
-        System.out.println(a);
+//        String a = hip(28000, 180, 10.5);
+//        System.out.println(a);
 
     }
 }

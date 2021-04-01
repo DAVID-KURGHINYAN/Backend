@@ -1,16 +1,15 @@
 package modules.user.models.response;
 
 import lombok.Data;
-import modules.user.models.PersonDetails;
 
 import java.util.Date;
 
 @Data
-public class ResLoginModel {
+public class ResAdminLoginModel {
     private String accessToken;
     private Date expireDate;
-    private PersonDetails personDetails;
+    private boolean isVerified;
 
-    public ResLoginModel() {
+    public ResAdminLoginModel() {
     }
 }
