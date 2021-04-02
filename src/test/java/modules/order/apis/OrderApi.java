@@ -19,14 +19,14 @@ public class OrderApi extends BaseApi {
         Response response = networkManager.PostAdmin(json, getUrlOrderAdminList(role), "", Languages.hy, role);
 
         Type type = new TypeToken<ResponseModel<ResAdminListModel>>() {
-        }.getRawType();
+        }.getType();
         ResponseModel<ResAdminListModel> responseModel = gson.fromJson(response.responseText,type);
         responseModel.statusCode = response.statusCode;
         return responseModel;
     }
     public ResponseModel<ResOrderDashboard> orderDashboard(Roles role) {
         Response response = networkManager.Get(getUriDashboard(role),"",Languages.hy,role);
-        Type type = new TypeToken<ResponseModel<ResOrderDashboard>>(){}.getRawType();
+        Type type = new TypeToken<ResponseModel<ResOrderDashboard>>(){}.getType();
         ResponseModel<ResOrderDashboard> responseModel = gson.fromJson(response.responseText,type);
         responseModel.statusCode= response.statusCode;
         return responseModel;

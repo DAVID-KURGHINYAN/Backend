@@ -21,22 +21,25 @@ public class OrderService extends BaseService {
         model.setPageNumber(1);
         model.setPageSize(10);
         model.setStatus(1);
+
         ResponseModel<ResAdminListModel> responseModel = orderApi.orderAdminList(model, Roles.Admin);
+        int index = 0;
+        int size = responseModel.data.getList().size();
+        int status = responseModel.data.getList().get(index).getStatus();
+        int paymentType = responseModel.data.getList().get(index).getPaymentType();
+
         Assert.assertTrue(responseModel.success);
         Assert.assertEquals(responseModel.statusCode, 200);
-//        for (int i = 0; i <responseModel.data.getList().size() ; i++) {
-//            if (responseModel.data.getList().get(i).getPaymentType()==1){
-//                System.out.println(responseModel);
-//            }
-//            else System.out.println("There isn`t Post Terminal");
-//        }
-        System.out.println(responseModel);
+        for (index = 0; index < size; index++) {
+            if (status == 1 && paymentType == 1) {
+                System.out.println(responseModel.data.getList().get(index));
+            } else System.out.println("There isn`t Post Terminal");
+        }
     }
-
-    public void getOrderDashboard(){
+    public void getOrderDashboard() {
         ResponseModel<ResOrderDashboard> responseModel = orderApi.orderDashboard(Roles.Admin);
-        Assert.assertEquals(responseModel.statusCode,200);
+        Assert.assertEquals(responseModel.statusCode, 200);
         Assert.assertTrue(responseModel.success);
-        System.out.println(responseModel);
+        System.out.println(responseModel.data.getTotalOrdersCount());
     }
 }

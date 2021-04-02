@@ -71,4 +71,14 @@ public class BaseApi {
         }
         return "You are not authorized";
     }
+    protected String getUriCategory(){
+        return "/api/Category";
+    }
+    protected String getUriGetByDispatcherAdvanced(Roles role){
+        if (role==Roles.Admin){
+            return "/api/order/GetByDispatcherAdvanced";
+        }
+        return "You are not authorized";
+
+    }
 }

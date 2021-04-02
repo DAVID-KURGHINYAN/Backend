@@ -1,10 +1,9 @@
-package modules.user.models.request;
+package delivaryModules.dispatcher.models.request;
 
 import lombok.Data;
-import modules.user.models.DispatcherDataModel;
 
 @Data
-public class ReqDispatcherCarrierListModel {
+public class ReqDispatcherGetCarrierList {
     private int pageNumber;
     private int pageSize;
     private boolean descending;
@@ -17,6 +16,6 @@ public class ReqDispatcherCarrierListModel {
     private String phoneNumber;
     private int orderBy;
 
-    public ReqDispatcherCarrierListModel() {
+    public ReqDispatcherGetCarrierList() {
     }
 }
