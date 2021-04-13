@@ -11,8 +11,8 @@ public class ProductModelForDispatcherAdvanced {
     private int quantity;
     private int residue;
     private String unit;
-    private int price;
-    private int totalPrice;
+    private double price;
+    private double totalPrice;
     private boolean isPackage;
 
     public ProductModelForDispatcherAdvanced() {

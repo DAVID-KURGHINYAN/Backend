@@ -8,8 +8,8 @@ public class AddressModel {
     private String addressId;
     private String name;
     private int type;
-    private int lat;
-    private int lng;
+    private double lat;
+    private double lng;
 
     public AddressModel() {
     }

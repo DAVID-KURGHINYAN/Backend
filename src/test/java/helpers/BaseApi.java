@@ -13,6 +13,10 @@ public class BaseApi {
         this.gson = new Gson();
     }
 
+    protected String getCarrierList() {
+        return "/api/Dispatcher/GetCarrierList";
+    }
+
     protected String getUriAdminLogin() {
 
         return "/api/Auth/AdminLogin";
@@ -40,8 +44,9 @@ public class BaseApi {
         }
         return "null";
     }
+
     protected String getOrderById(Roles role) {
-        if (role==Roles.Admin) {
+        if (role == Roles.Admin) {
             return "/api/order";
         }
         return "there is not api.";
@@ -65,20 +70,22 @@ public class BaseApi {
         }
         return "You are not authorized";
     }
+
     protected String getUriDashboard(Roles role) {
-        if (role==Roles.Admin){
+        if (role == Roles.Admin) {
             return "/api/Order/Dashboard";
         }
         return "You are not authorized";
     }
-    protected String getUriCategory(){
+
+    protected String getUriCategory() {
         return "/api/Category";
     }
-    protected String getUriGetByDispatcherAdvanced(Roles role){
-        if (role==Roles.Admin){
+
+    protected String getByDispatcherAdvanced(Roles role) {
+        if (role == Roles.Admin) {
             return "/api/order/GetByDispatcherAdvanced";
         }
         return "You are not authorized";
-
     }
 }

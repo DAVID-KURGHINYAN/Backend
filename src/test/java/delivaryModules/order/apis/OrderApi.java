@@ -13,9 +13,9 @@ import helpers.enums.Urls;
 import java.lang.reflect.Type;
 
 public class OrderApi extends BaseApi {
-    public ResponseModel<ResGetByDispatcherAdvanced> dispatcherAdvanced(ReqGetByDispatcherAdvanced model, Roles role) {
+    public ResponseModel<ResGetByDispatcherAdvanced> getByDispatcherAdvancedApi(ReqGetByDispatcherAdvanced model, Roles role) {
         String json = gson.toJson(model);
-        Response response = networkManager.Post(json,getUriGetByDispatcherAdvanced(role),"", Languages.hy, Urls.Back,role);
+        Response response = networkManager.Post(json,getByDispatcherAdvanced(role),"", Languages.hy, Urls.Delivery,role);
         Type type  = new TypeToken<ResponseModel<ResGetByDispatcherAdvanced>>(){}.getType();
         ResponseModel<ResGetByDispatcherAdvanced> responseModel = gson.fromJson(response.responseText,type);
         responseModel.statusCode= response.statusCode;

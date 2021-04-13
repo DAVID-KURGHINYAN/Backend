@@ -20,14 +20,14 @@ public class ResGetByDispatcherAdvanced {
     private String dateFrom;
     private String dateTo;
     private String createdDate;
-    private int totalPrice;
+    private double totalPrice;
     private String notes;
     private ReceiverModel receiver;
     private CarrierModel carrier;
     private CarrierModel parentCarrier;
     private List<ProductModelForDispatcherAdvanced> products;
     private List<AddressModel> addresses;
-    private List<String> subOrders;
+    private List<Object> subOrders;
     private String phoneNumber;
     private String firstName;
     private String lastName;
