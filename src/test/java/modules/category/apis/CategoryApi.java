@@ -6,6 +6,7 @@ import helpers.Response;
 import helpers.ResponseModel;
 import helpers.enums.Languages;
 import helpers.enums.Roles;
+import helpers.enums.Urls;
 import modules.category.models.response.ResGetCategoryModel;
 
 import java.lang.reflect.Type;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class CategoryApi extends BaseApi {
     public ResponseModel<List<ResGetCategoryModel>> getCategory() {
-        Response response = networkManager.Get(getUriCategory(), "", Languages.hy, Roles.Guest);
+        Response response = networkManager.Get(getUriCategory(), "", Languages.hy, Urls.Back, Roles.Guest);
         Type type = new TypeToken<ResponseModel<List<ResGetCategoryModel>>>() {
         }.getType();
         ResponseModel<List<ResGetCategoryModel>> responseModel = gson.fromJson(response.responseText, type);

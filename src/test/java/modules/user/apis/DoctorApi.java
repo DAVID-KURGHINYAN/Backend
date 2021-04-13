@@ -7,6 +7,7 @@ import helpers.ResponseModel;
 import helpers.TokenHelper;
 import helpers.enums.Languages;
 import helpers.enums.Roles;
+import helpers.enums.Urls;
 import modules.user.models.request.ReqGetDoctorList;
 import modules.user.models.response.ResGetDoctorList;
 
@@ -16,7 +17,7 @@ public class DoctorApi extends BaseApi {
 
     public ResponseModel<ResGetDoctorList> getDoctorList(ReqGetDoctorList model, Roles role){
         String json = gson.toJson(model);
-        Response response = networkManager.Post(json,getUrlForDoctorList(),"", Languages.hy,role);
+        Response response = networkManager.Post(json,getUrlForDoctorList(),"", Languages.hy, Urls.Back,role);
         Type type = new TypeToken<ResponseModel<ResGetDoctorList>>(){}.getType();
         ResponseModel<ResGetDoctorList> responseModel = gson.fromJson(response.responseText,type);
         responseModel.statusCode= response.statusCode;

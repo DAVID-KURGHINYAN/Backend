@@ -1,9 +1,6 @@
 package modules.order.models.request;
 
 import lombok.Data;
-import modules.order.models.response.ResAdminListModel;
-
-import java.util.Date;
 
 @Data
 public class ReqAdminListModel {

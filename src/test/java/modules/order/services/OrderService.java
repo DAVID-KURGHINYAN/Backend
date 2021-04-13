@@ -5,7 +5,7 @@ import helpers.ResponseModel;
 import helpers.enums.Roles;
 import modules.order.apis.OrderApi;
 import modules.order.models.request.ReqAdminListModel;
-import modules.order.models.response.ResAdminListModel;
+import modules.order.models.response.ResAdminList;
 import modules.order.models.response.ResOrderDashboard;
 import org.junit.Assert;
 
@@ -22,7 +22,7 @@ public class OrderService extends BaseService {
         model.setPageSize(10);
         model.setStatus(1);
 
-        ResponseModel<ResAdminListModel> responseModel = orderApi.orderAdminList(model, Roles.Admin);
+        ResponseModel<ResAdminList> responseModel = orderApi.orderAdminList(model, Roles.Admin);
         int index = 0;
         int size = responseModel.data.getList().size();
         int status = responseModel.data.getList().get(index).getStatus();

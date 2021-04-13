@@ -6,12 +6,11 @@ import modules.user.models.AdminListModel;
 import java.util.List;
 
 @Data
-public class ResAdminListModel {
+public class ResOrderHistory {
     private int pageCount;
     private int totalCount;
     private List<AdminListModel> list;
 
-    public ResAdminListModel() {
+    public ResOrderHistory() {
     }
-
 }

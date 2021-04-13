@@ -16,8 +16,7 @@ public class UserController {
 
     @Test
     public void GetAdminsSuccessCase() {
-
-        userService.GetAdminsList();
+        userService.getAdminList();
     }
 
     @Test

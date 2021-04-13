@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class ResOrderByIdModel {
+public class ResOrderById {
     private int id;
     private int status;
     private int paymentType;
@@ -39,6 +39,6 @@ public class ResOrderByIdModel {
     private String building;
     private String addressText;
 
-    public ResOrderByIdModel() {
+    public ResOrderById() {
     }
 }

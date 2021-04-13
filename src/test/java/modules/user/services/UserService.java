@@ -34,7 +34,7 @@ public class UserService extends BaseService {
         Assert.assertNotNull(resAdminLoginModel.getAccessToken());
     }
 
-    public void GetAdminsList() {
+    public void getAdminList() {
         ResponseModel<List<ResAdminList>> responseModel = userApi.GetAdminList(Roles.Admin);
         Assert.assertEquals(responseModel.statusCode, 200);
         Assert.assertTrue(responseModel.success);

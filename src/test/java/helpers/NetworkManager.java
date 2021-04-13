@@ -2,6 +2,7 @@ package helpers;
 
 import helpers.enums.Languages;
 import helpers.enums.Roles;
+import helpers.enums.Urls;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -9,12 +10,19 @@ import static io.restassured.RestAssured.given;
 
 public class NetworkManager {
 
-    private static final String baseUrl = "https://alfaback.abmdemo.me";
-    private static final String baseUrlAdmin = "https://abmdelivery.abmdemo.me";
-    private static final String baseUrlBranchAdmin = "https://alfaadmin.abmdemo.me/";
+    private static final String BackUrl = "https://alfaback.abmdemo.me";
+    private static final String DeliveryUrl = "https://abmdelivery.abmdemo.me";
+    private static final String BranchAdminUrl = "https://alfaadmin.abmdemo.me/";
 
-    public helpers.Response PostBranchAdmin(String body, String uri, String param, Languages language, Roles role) {
-        String url = baseUrlBranchAdmin + uri + param;
+    String url = "";
+
+    public helpers.Response PostBranchAdmin(String body, String uri, String param, Languages language, Urls urls, Roles role) {
+
+        if (urls == Urls.Back) {
+            url = BackUrl + uri + param;
+        } else if (urls == Urls.Delivery) {
+            url = DeliveryUrl + uri + param;
+        } else url = BranchAdminUrl + uri + param;
         RequestSpecification specification = given()
                 .contentType("application/json")
                 .header("languageName", language.toString());
@@ -30,8 +38,12 @@ public class NetworkManager {
         return new helpers.Response(response.getBody().asString(), response.getStatusCode());
     }
 
-    public helpers.Response PostAdmin(String body, String uri, String param, Languages language, Roles role) {
-        String url = baseUrl + uri + param;
+    public helpers.Response PostAdmin(String body, String uri, String param, Languages language,Urls urls, Roles role) {
+        if (urls == Urls.Back) {
+            url = BackUrl + uri + param;
+        } else if (urls == Urls.Delivery) {
+            url = DeliveryUrl + uri + param;
+        } else url = BranchAdminUrl + uri + param;
         RequestSpecification specification = given()
                 .contentType("application/json")
                 .header("languageName", language.toString());
@@ -48,8 +60,12 @@ public class NetworkManager {
         return new helpers.Response(response.getBody().asString(), response.getStatusCode());
     }
 
-    public helpers.Response Get(String uri, String param, Languages language, Roles role) {
-        String url = baseUrl + uri + param;
+    public helpers.Response Get(String uri, String param, Languages language,Urls urls, Roles role) {
+        if (urls == Urls.Back) {
+            url = BackUrl + uri + param;
+        } else if (urls == Urls.Delivery) {
+            url = DeliveryUrl + uri + param;
+        } else url = BranchAdminUrl + uri + param;
         RequestSpecification specification = given()
                 .contentType("application/json")
                 .header("languageName", language.toString());
@@ -66,8 +82,12 @@ public class NetworkManager {
         return new helpers.Response(response.getBody().asString(), response.getStatusCode());
     }
 
-    public helpers.Response Post(String body, String uri, String param, Languages language, Roles role) {
-        String url = baseUrl + uri + param;
+    public helpers.Response Post(String body, String uri, String param, Languages language,Urls urls, Roles role) {
+        if (urls == Urls.Back) {
+            url = BackUrl + uri + param;
+        } else if (urls == Urls.Delivery) {
+            url = DeliveryUrl + uri + param;
+        } else url = BranchAdminUrl + uri + param;
         RequestSpecification specification = given()
                 .contentType("application/json")
                 .header("languageName", language.toString());
@@ -84,8 +104,12 @@ public class NetworkManager {
         return new helpers.Response(response.getBody().asString(), response.getStatusCode());
     }
 
-    public helpers.Response Put(String body, String uri, String param, Languages language, Roles role) {
-        String url = baseUrl + uri + param;
+    public helpers.Response Put(String body, String uri, String param, Languages language,Urls urls, Roles role) {
+        if (urls == Urls.Back) {
+            url = BackUrl + uri + param;
+        } else if (urls == Urls.Delivery) {
+            url = DeliveryUrl + uri + param;
+        } else url = BranchAdminUrl + uri + param;
         RequestSpecification specification = given()
                 .contentType("application/json")
                 .header("languageName", language.toString());
