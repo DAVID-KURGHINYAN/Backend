@@ -88,4 +88,10 @@ public class BaseApi {
         }
         return "You are not authorized";
     }
+    protected String getUriAvailabilityById(Roles role){
+        if (role==Roles.Admin){
+            return "/api/product/availablity";
+        }
+        return "You are not authorized";
+    }
 }

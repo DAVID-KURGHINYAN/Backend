@@ -14,4 +14,9 @@ public class ProductController {
     public void getProductsSuccessCase(){
         productService.getProductList();
     }
+
+    @Test
+    public void getProductAvailabilityById(){
+        productService.getProductAvailabilityById();
+    }
 }
