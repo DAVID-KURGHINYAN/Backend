@@ -4,15 +4,21 @@ public class Bowling {
     HashMap<String, Integer> players;
 
     Bowling() {
-        players = new HashMap<String, Integer>();
+        players = new HashMap<>();
     }
 
     public void addPlayer(String name, int p) {
         players.put(name, p);
     }
-    public void getWinner(){
-        int max=Collections.max(players.values());
-        System.out.println(max);
+
+    public void getWinner() {
+
+        int max = Collections.max(players.values());
+        for (String key:players.keySet()){
+            if (players.get(key).equals(max))
+            System.out.println(key);
+        }
+
     }
     //your code goes here
 
