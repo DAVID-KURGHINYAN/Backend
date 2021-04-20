@@ -37,4 +37,9 @@ public class UserController {
     public void GetUserAddressSuccessCase(){
         addressService.getUserAddress();
     }
+
+    @Test
+    public void authAdminSuccessCase(){
+        userService.TakeAdminToken();
+    }
 }

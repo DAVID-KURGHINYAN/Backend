@@ -8,8 +8,8 @@ public class ReqAdminListModel {
     private int pageSize;
 //    private String text;
     private int status;
-//    private Date dateFrom;
-//    private Date dateTo;
+//    private String dateFrom;
+//    private String dateTo;
 //    private int priceFrom;
 //    private int priceTo;
 

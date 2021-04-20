@@ -32,6 +32,7 @@ public class UserService extends BaseService {
         Assert.assertTrue(responseModel.success);
         ResAdminLoginModel resAdminLoginModel = responseModel.data;
         Assert.assertNotNull(resAdminLoginModel.getAccessToken());
+
     }
 
     public void getAdminList() {
