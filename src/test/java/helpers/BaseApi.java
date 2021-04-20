@@ -94,4 +94,10 @@ public class BaseApi {
         }
         return "You are not authorized";
     }
+    protected String getUriCarrier(Roles role){
+        if (role == Roles.Admin) {
+            return "/api/dispatcher/getCarrier";
+        }
+        return "";
+    }
 }

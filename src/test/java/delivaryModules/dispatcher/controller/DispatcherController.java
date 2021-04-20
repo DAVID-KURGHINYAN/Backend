@@ -14,4 +14,9 @@ public class DispatcherController {
         dispatcherService.getCarrierListService();
     }
 
+    @Test
+    public void getCarrier(){
+        dispatcherService.getCarrierService();
+    }
+
 }
