@@ -2,6 +2,7 @@ package delivaryModules.dispatcher.apis;
 
 import com.google.gson.reflect.TypeToken;
 import delivaryModules.dispatcher.models.request.ReqDispatcherGetCarrierList;
+import delivaryModules.dispatcher.models.request.ReqEditCarrier;
 import delivaryModules.dispatcher.models.request.ReqGetCarrier;
 import delivaryModules.dispatcher.models.response.ResDispatcherGetCarrierList;
 import delivaryModules.dispatcher.models.response.ResGetCarrier;
@@ -29,6 +30,14 @@ public class DispatcherApi extends BaseApi {
         Response response = networkManager.Post(json,getUriCarrier(role),"",Languages.hy,Urls.Delivery,role);
         Type type = new TypeToken<ResponseModel<ResGetCarrier>>(){}.getType();
         ResponseModel<ResGetCarrier> responseModel = gson.fromJson(response.responseText,type);
+        responseModel.statusCode= response.statusCode;
+        return responseModel;
+    }
+    public ResponseModel<Boolean> editCarrierApi(ReqEditCarrier model,Roles role) {
+        String json = gson.toJson(model);
+        Response response = networkManager.Post(json,getUriEditCarrier(role),"",Languages.hy,Urls.Delivery,role);
+        Type type = new TypeToken<ResponseModel<Boolean>>(){}.getType();
+        ResponseModel<Boolean> responseModel = gson.fromJson(response.responseText,type);
         responseModel.statusCode= response.statusCode;
         return responseModel;
     }

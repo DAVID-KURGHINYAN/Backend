@@ -100,4 +100,10 @@ public class BaseApi {
         }
         return "";
     }
+    protected String getUriEditCarrier(Roles role) {
+        if (role==Roles.Admin) {
+            return "/api/dispatcher/editCarrier";
+        }
+        return "";
+    }
 }

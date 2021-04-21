@@ -18,5 +18,8 @@ public class DispatcherController {
     public void getCarrier(){
         dispatcherService.getCarrierService();
     }
-
+    @Test
+    public void editCarrier(){
+        dispatcherService.editCarrierService();
+    }
 }

@@ -2,6 +2,7 @@ package delivaryModules.dispatcher.services;
 
 import delivaryModules.dispatcher.apis.DispatcherApi;
 import delivaryModules.dispatcher.models.request.ReqDispatcherGetCarrierList;
+import delivaryModules.dispatcher.models.request.ReqEditCarrier;
 import delivaryModules.dispatcher.models.request.ReqGetCarrier;
 import delivaryModules.dispatcher.models.response.ResDispatcherGetCarrierList;
 import delivaryModules.dispatcher.models.response.ResGetCarrier;
@@ -41,6 +42,13 @@ public class DispatcherService {
 
         ResGetCarrier resGetCarrier = responseModel.data;
         Assert.assertEquals(resGetCarrier.getFirstName(),"driver");
+        System.out.println("OK");
+    }
+    public void editCarrierService(){
+        ReqEditCarrier model = new ReqEditCarrier();
+        model.setFirstName("driver");
+        ResponseModel<Boolean> responseModel = dispatcherApi.editCarrierApi(model,Roles.Admin);
+
         System.out.println("OK");
     }
 }
