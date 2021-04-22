@@ -11,7 +11,7 @@ public class OrderController {
     }
     @Test
     public void adminListSuccessCase(){
-        orderService.GetOrderAdminList();
+        orderService.getOrderAdminList();
     }
     @Test
     public void orderDashboardSuccessCase(){

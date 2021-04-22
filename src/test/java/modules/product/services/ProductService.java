@@ -35,7 +35,7 @@ public class ProductService extends BaseService {
         ResponseModel<ResProductAvailabilityById> responseModel = productApi.getProductAvailability(Roles.Admin);
         Assert.assertEquals(responseModel.statusCode,200);
         Assert.assertTrue(responseModel.success);
-        System.out.println("OK");
+        System.out.println("getProductAvailabilityById is OK");
         ResProductAvailabilityById availability = responseModel.data;
         System.out.println(availability.getBranches().get(0).getContactPhoneNumber());
     }

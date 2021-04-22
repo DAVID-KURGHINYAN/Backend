@@ -7,33 +7,41 @@ import modules.order.apis.OrderApi;
 import modules.order.models.request.ReqAdminListModel;
 import modules.order.models.response.ResAdminList;
 import modules.order.models.response.ResOrderDashboard;
+import modules.product.services.ProductService;
+import modules.user.models.AdminListModel;
 import org.junit.Assert;
 
 public class OrderService extends BaseService {
     private final OrderApi orderApi;
+    private final delivaryModules.order.services.OrderService orderService;
+    private final ProductService productService;
 
     public OrderService() {
         orderApi = new OrderApi();
+        orderService = new delivaryModules.order.services.OrderService();
+        productService = new ProductService();
     }
 
-    public void GetOrderAdminList() {
+    public void getOrderAdminList() {
         ReqAdminListModel model = new ReqAdminListModel();
         model.setPageNumber(1);
         model.setPageSize(10);
         model.setStatus(1);
 
         ResponseModel<ResAdminList> responseModel = orderApi.orderAdminList(model, Roles.Admin);
-        int index = 0;
         int size = responseModel.data.getList().size();
-        int status = responseModel.data.getList().get(index).getStatus();
-        int paymentType = responseModel.data.getList().get(index).getPaymentType();
-
         Assert.assertTrue(responseModel.success);
         Assert.assertEquals(responseModel.statusCode, 200);
-        for (index = 0; index < size; index++) {
-            if (status == 1 && paymentType == 1) {
-                System.out.println(responseModel.data.getList().get(index));
-            } else System.out.println("There isn`t Post Terminal");
+        for (int i = 0; i < size; i++) {
+            AdminListModel adminListModel = responseModel.data.getList().get(i);
+            int id = adminListModel.getId();
+//            int status = adminListModel.getStatus();
+//            int paymentType = adminListModel.getPaymentType();
+            if (id==12318) {
+               orderService.getByDispatcherAdvancedService();
+               productService.getProductAvailabilityById();
+                System.out.println(responseModel.data.getList().get(i));
+            }
         }
     }
     public void getOrderDashboard() {

@@ -45,7 +45,7 @@ public class UserApi extends BaseApi {
 
     public ResponseModel<ResLoginModel> Login(ReqLoginModel model, Roles role) {
         String json = gson.toJson(model);
-        Response response = networkManager.Post(json, getUri(role), "", Languages.hy, Urls.Back, Roles.Admin);
+        Response response = networkManager.Post(json, getUri(role), "", Languages.hy, Urls.Back, role);
         Type collectionType = new TypeToken<ResponseModel<ResLoginModel>>() {
         }.getType();
         ResponseModel<ResLoginModel> responseModel = gson.fromJson(response.responseText, collectionType);

@@ -26,7 +26,7 @@ public class ProductApi extends BaseApi {
     }
 
     public ResponseModel<ResProductAvailabilityById> getProductAvailability(Roles role){
-        String id = "/2222";
+        String id = "/5893";
         Response response = networkManager.Get(getUriAvailabilityById(role),id,Languages.hy,Urls.Back,role);
         Type type = new TypeToken<ResponseModel<ResProductAvailabilityById>>(){}.getType();
         ResponseModel<ResProductAvailabilityById> responseModel = gson.fromJson(response.responseText,type);
