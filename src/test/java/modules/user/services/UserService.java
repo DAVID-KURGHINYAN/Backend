@@ -9,9 +9,11 @@ import helpers.enums.Roles;
 import modules.user.apis.UserApi;
 import modules.user.models.request.ReqAdminCreateModel;
 import modules.user.models.request.ReqLoginModel;
+import modules.user.models.request.ReqUserList;
 import modules.user.models.response.ResAdminDetails;
 import modules.user.models.response.ResAdminList;
 import modules.user.models.response.ResAdminLoginModel;
+import modules.user.models.response.ResUserList;
 import org.junit.Assert;
 
 import java.util.List;
@@ -93,5 +95,18 @@ public class UserService extends BaseService {
 
         ResponseModel<Boolean> responseModel = userApi.EditAdmin(model, Roles.Admin);
         Assert.assertTrue(responseModel.success);
+    }
+
+    public void getUserList() {
+        ReqUserList model = new ReqUserList();
+        model.setPageNumber(1);
+        model.setPageSize(10);
+        ResponseModel<ResUserList> responseModel = userApi.userList(model, Roles.Admin);
+        Assert.assertTrue(responseModel.success);
+
+        ResUserList resUserList = responseModel.data;
+        if (resUserList.getList().get(0).getEmail().equals("aram.shilajyan@gmail.com"))
+        System.out.println(resUserList.getList().get(0).getFullName());
+
     }
 }

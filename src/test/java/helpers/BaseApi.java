@@ -106,4 +106,11 @@ public class BaseApi {
         }
         return "";
     }
+    protected String getUriUserList(Roles role) {
+        if (role==Roles.Admin) {
+            return "/api/User/List";
+        }
+        return "";
+    }
+
 }

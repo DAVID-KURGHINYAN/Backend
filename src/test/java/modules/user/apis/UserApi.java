@@ -7,6 +7,7 @@ import helpers.enums.Roles;
 import helpers.enums.Urls;
 import modules.user.models.request.ReqAdminCreateModel;
 import modules.user.models.request.ReqLoginModel;
+import modules.user.models.request.ReqUserList;
 import modules.user.models.response.*;
 
 import java.lang.reflect.Type;
@@ -90,6 +91,15 @@ public class UserApi extends BaseApi {
         }.getType();
         ResponseModel<ResGetUserAddressModel> responseModel = gson.fromJson(response.responseText, type);
         responseModel.statusCode = response.statusCode;
+        return responseModel;
+    }
+
+    public ResponseModel<ResUserList> userList(ReqUserList model, Roles role) {
+        String json = gson.toJson(model);
+        Response  response = networkManager.Post(json,getUriUserList(role),"",Languages.hy,Urls.Back,role);
+        Type type = new TypeToken<ResponseModel<ResUserList>>(){}.getType();
+        ResponseModel<ResUserList> responseModel = gson.fromJson(response.responseText,type);
+        responseModel.statusCode= response.statusCode;
         return responseModel;
     }
 }
