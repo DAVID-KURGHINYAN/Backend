@@ -48,7 +48,12 @@ public class NetworkManager {
                 .contentType("application/json")
                 .header("languageName", language.toString());
         if (role != Roles.Default) {
-            specification = specification.header("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjIyNDQxNS00YjljLTQyZjctYjU2MC1kNmViOWI5M2Y1MGQiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQGdtYWlsLmNvbSIsImp0aSI6Ijc1YWJkODcxLTU1N2ItNGU3MC1hNWYxLWQ0NmMwZDlmZjAzNiIsImlhdCI6MTYxNzEwNTE5OCwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiU3VwZXJBZG1pbiIsIm5iZiI6MTYxNzEwNTE5OCwiZXhwIjoxNjQ4NjQxMTk4LCJpc3MiOiJ3ZWJBcGkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAvIn0.ZOCp-NvPNNlDhwzWVbGZgpSaj-4bMsz5N84_zY8slD0");
+            specification = specification.header("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9." +
+                    "eyJzdWIiOiI2NjIyNDQxNS00YjljLTQyZjctYjU2MC1kNmViOWI5M2Y1MGQiLCJ1bmlxdWVfbmFtZSI6ImFkbW" +
+                    "luQGdtYWlsLmNvbSIsImp0aSI6Ijc1YWJkODcxLTU1N2ItNGU3MC1hNWYxLWQ0NmMwZDlmZjAzNiIsImlhdCI6MTY" +
+                    "xNzEwNTE5OCwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltc" +
+                    "y9yb2xlIjoiU3VwZXJBZG1pbiIsIm5iZiI6MTYxNzEwNTE5OCwiZXhwIjoxNjQ4NjQxMTk4LCJpc3MiOiJ3ZWJBcG" +
+                    "kiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAvIn0.ZOCp-NvPNNlDhwzWVbGZgpSaj-4bMsz5N84_zY8slD0");
         }
         Response response = specification
                 .body(body)

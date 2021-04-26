@@ -23,7 +23,7 @@ public class OrderService extends BaseService {
         ReqGetByDispatcherAdvanced model = new ReqGetByDispatcherAdvanced();
         model.setClientId("AlfaDispatcherClient");
         model.setSecret("Password1/");
-        model.setOrderId("12318");
+        model.setOrderId("12327");
         ResponseModel<ResGetByDispatcherAdvanced> responseModel = orderApi.getByDispatcherAdvancedApi(model, Roles.Admin);
         Assert.assertEquals(responseModel.statusCode,200);
         System.out.println("getByDispatcherAdvanced is OK");

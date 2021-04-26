@@ -22,6 +22,7 @@ public class CategoryService extends BaseService {
         Assert.assertEquals(models.get(0).getName(),"Մանկական");
         System.out.println(models.get(0));
         System.out.println(models.get(1).getId());
+        System.out.println(models.get(3).getId());
 
     }
 }

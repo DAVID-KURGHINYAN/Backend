@@ -88,29 +88,40 @@ public class BaseApi {
         }
         return "You are not authorized";
     }
-    protected String getUriAvailabilityById(Roles role){
-        if (role==Roles.Admin){
+
+    protected String getUriAvailabilityById(Roles role) {
+        if (role == Roles.Admin) {
             return "/api/product/availablity";
         }
         return "You are not authorized";
     }
-    protected String getUriCarrier(Roles role){
+
+    protected String getUriCarrier(Roles role) {
         if (role == Roles.Admin) {
             return "/api/dispatcher/getCarrier";
         }
-        return "";
+        return "There isn't api";
     }
+
     protected String getUriEditCarrier(Roles role) {
-        if (role==Roles.Admin) {
+        if (role == Roles.Admin) {
             return "/api/dispatcher/editCarrier";
         }
-        return "";
+        return "There isn't api";
     }
+
     protected String getUriUserList(Roles role) {
-        if (role==Roles.Admin) {
+        if (role == Roles.Admin) {
             return "/api/User/List";
         }
-        return "";
+        return "There isn't api";
+    }
+
+    protected String getUriProducerList(Roles role) {
+        if (role==Roles.Admin){
+            return "/api/producer/list";
+        }
+        return "There isn't api";
     }
 
 }
