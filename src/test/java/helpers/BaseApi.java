@@ -123,5 +123,17 @@ public class BaseApi {
         }
         return "There isn't api";
     }
+    protected String getUriBrandList(Roles role){
+        if (role==Roles.Admin){
+            return "/api/brand/list";
+        }
+        return "There isn't api";
+    }
+    protected String getUriActiveIngredient(Roles role){
+        if (role==Roles.Admin){
+            return "/api/activeIngredient/list";
+        }
+        return "There isn't api";
+    }
 
 }

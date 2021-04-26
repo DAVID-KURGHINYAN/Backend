@@ -21,6 +21,7 @@ public class ProducerService {
 
         ResponseModel<ResProducerList> responseModel = producerApi.getProducerList(model, Roles.Admin);
         Assert.assertTrue(responseModel.success);
+        System.out.println(responseModel.data.getList());
         System.out.println("OK");
     }
 }
